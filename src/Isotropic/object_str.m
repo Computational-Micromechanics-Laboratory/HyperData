@@ -181,7 +181,7 @@ else
     Pdata_ps = [];
 end
 if n_be>0
-    [Pdata1_be,Pdata2_be] = data_driven2_function(F_be,lambda_be,lambda_inv_be,b_be,n_be,p1_be,p2_be);
+    [Pdata1_be,Pdata2_be] = data_driven3_function(F_be,lambda_be,lambda_inv_be,b_be,n_be,p1_be,p2_be);
 else
     Pdata1_be = [];
     Pdata2_be = [];

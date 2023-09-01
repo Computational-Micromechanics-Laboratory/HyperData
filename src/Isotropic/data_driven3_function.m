@@ -27,7 +27,6 @@ lambda3_inv = lambda_inv(:,3);
 % ---------------------------------------------%
 
 % Derivatives of free energy function wrt. lambda1, lambda2 and lambda3
-
     wdL1 = p1(:,1);   % derivative w.r.t. lambda1
     wdL2 = p1(:,2);
     wdL3 = p1(:,3);
@@ -37,7 +36,7 @@ lambda3_inv = lambda_inv(:,3);
     wdL2_inv = p2(:,2);
     wdL3_inv = p2(:,3);
 %-------------------------------------------------------------------%
-% Computation of isochoric part of Kirchhoff stress         %GÜNCELLEME FAD
+% Computation of isochoric part of Kirchhoff stress
 taubar = sym(zeros(3,3,s));
 for m = 1:s
     taubar(1,1,m) =wdL1(m)*lambda1(m)- wdL1_inv(m)*lambda1_inv(m);

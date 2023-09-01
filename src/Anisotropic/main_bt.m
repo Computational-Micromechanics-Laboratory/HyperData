@@ -42,7 +42,7 @@ init_control_pts=ones(n_ctrl_pts,n_free_ener);
 % Lower and upper bounds
 LB = zeros(n_ctrl_pts,n_free_ener);
 UB = inf*ones(n_ctrl_pts,n_free_ener);
-% Polyconvexity and normalization?? constraints
+% Polyconvexity and normalization constraints
 [A,b]     = convexity_constraint(n_free_ener,n_ctrl_pts);
 [Aeq,beq] = zero_stress_constraint(n_free_ener,n_ctrl_pts);
 % Optimization
