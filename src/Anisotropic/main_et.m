@@ -64,5 +64,18 @@ qof1 = qof_function(lam_et, P_11, P_et1);
 qof2 = qof_function(lam_et, P_22, P_et2);
 qof_tot = qof1+qof2;
 
+% Stresses and first derivatives or B-splines / extended
+switch dispmodel
+    case "io"
+        [I1_ET_ext, E4_ET_ext, In_ET_ext, F_ET_ext, Ifib_ET_ext, Efib_ET_ext] ...
+            = biax_defo_io(lam_et_ext,lam_et_ext);
+        [~, ~, P_11, P_22, p1, p4] = ...
+            object_ET(opt_control_pts,degree,len_ext,F_ET_ext,0,0,I1_ET_ext,E4_ET_ext,Efib_ET_ext);
+    case "fs"
+        [I1_ET_ext, I4f_ET_ext, F_ET_ext, Ifib_ET_ext] = biax_defo_fs(lam_et_ext,lam_et_ext);
+        [~, ~, P_11, P_22, p1, p4] = ...
+            object_ET(opt_control_pts,degree,len_ext,F_ET_ext,0,0,I1_ET_ext,I4f_ET_ext,Ifib_ET_ext);
+end
+
 
 

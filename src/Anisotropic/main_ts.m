@@ -57,3 +57,14 @@ qof_nf = qof_function(shear, P_nf, Pexp_nf);
 qof_sn = qof_function(shear, P_sn, Pexp_sn);
 qof_ns = qof_function(shear, P_ns, Pexp_ns);
 qof_tot = qof_fs+qof_sf+qof_fn+qof_nf+qof_sn+qof_ns;
+
+% Stresses and first derivatives or B-splines / extended
+[F_fs,I1,~,I4f,I8fs]= shear_defo(shear_ext,12);
+[F_sf,~,I4s,~,~]    = shear_defo(shear_ext,21);
+[F_fn,~,~,~,~]      = shear_defo(shear_ext,13);
+[F_nf,~,~,~,~]      = shear_defo(shear_ext,31);
+[F_sn,~,~,~,~]      = shear_defo(shear_ext,23);
+[F_ns,~,~,~,~]      = shear_defo(shear_ext,32);
+[~,~,~,~,~,~,P_fs,P_sf,P_fn,P_nf,P_sn,P_ns, p1, pf, ps, pfs] = ...
+    object_TS(opt_control_pts,degree,len_ext,F_fs,F_sf,F_fn,F_nf,F_sn,F_ns,0,0,0,0,0,0,I1,I4s,I4f,I8fs);
+

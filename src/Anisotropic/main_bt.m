@@ -50,9 +50,6 @@ opt_control_pts = fmincon(err_tot,init_control_pts,A,b,Aeq,beq,LB,UB);
 
 %============ Results at the end of optimization ============%
 % Stresses and first derivatives or B-splines
-  
-%============ Define the objective function ============%
-% Error functions
 switch dispmodel
     case "io"
         [~, ~, P_11, P_22, p1, p4] = ...
@@ -76,6 +73,22 @@ for i = 1:bnds_sz(1)
     qof1 = qof1 + qof1_ind(i,:);
     qof2 = qof2 + qof2_ind(i,:);
     qof_tot = qof_tot + qof_tot_ind(i,:);
+end
+
+% Stresses and first derivatives or B-splines / extended
+switch dispmodel
+    case "io"
+        [I1, E4, In, F, Ifib, Efib] = biax_defo_io(lam_1_ext,lam_2_ext);
+    case "fs"
+        [I1, I4f, F, Ifib] = biax_defo_fs(lam_1_ext,lam_2_ext);
+end
+switch dispmodel
+    case "io"
+        [~, ~, P_11, P_22, p1, p4] = ...
+            object_ET(opt_control_pts,degree,len_ext,F,0,0,I1,E4,Efib);
+    case "fs"
+        [~, ~, P_11, P_22, p1, p4] = ...
+            object_ET(opt_control_pts,degree,len_ext,F,0,0,I1,I4f,Ifib);
 end
 
 

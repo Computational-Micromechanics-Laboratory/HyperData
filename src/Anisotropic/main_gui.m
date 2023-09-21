@@ -20,6 +20,13 @@ switch type
         P_et1       = ET_data(:,2);
         lam_et      = ET_data(:,1);  %stretch
         len         = length(lam_et);
+
+        if len < 100
+            lam_et_ext = linspace(lam_et(1),lam_et(end),100)';
+        else
+            lam_et_ext = lam_et;
+        end
+        len_ext = length(lam_et_ext);
     % Uniaxial Loading
     case "UT"
         P1_exp = dlmread(dataloc1);
@@ -32,6 +39,20 @@ switch type
         P_ut2   = P2_exp(:,2);
         lam_ut2 = P2_exp(:,1);
         n_ut2   = length(lam_ut2);
+
+        if n_ut1 < 100
+            lam_ut1_ext = linspace(lam_ut1(1),lam_ut1(end),100)';
+        else
+            lam_ut1_ext = lam_ut1;
+        end
+        n_ut1_ext = length(lam_ut1_ext);
+
+        if n_ut2 < 100
+            lam_ut2_ext = linspace(lam_ut2(1),lam_ut2(end),100)';
+        else
+            lam_ut2_ext = lam_ut2;
+        end
+        n_ut2_ext = length(lam_ut2_ext);
     % Triaxial Shear
     case "TS"
         fs_data     = dlmread(datalocfs);
@@ -50,14 +71,25 @@ switch type
         Pexp_ns = ns_data(:,2); 
         
         len     = length(shear);  % Length of the dataset
+
+        if len < 100
+            shear_ext = linspace(shear(1),shear(end),100)';
+        else
+            shear_ext = shear;
+        end
+        len_ext = length(shear_ext);
     % Biaxial Tension
     case "BT"
         P_exp1 = [];
         P_exp2 = [];
         lam_1 = [];
         lam_2 = [];
+        lam_1_ext = [];
+        lam_2_ext = [];
         bounds = [];
+        bounds_ext = [];
         len = 0;
+        len_ext = 0;
         for i = 1:length(Loc_Data)
             data_1     = dlmread(string(Loc_Data(i)));
             P_exp1       = [P_exp1; data_1(:,3)];
@@ -66,6 +98,18 @@ switch type
             lam_2      = [lam_2; data_1(:,2)];  %stretch
             bounds(i,:) = [len+1 length(lam_1)];
             len = length(lam_1);
+
+            if length(data_1(:,1)) < 100
+                lam1_be_ext = linspace(data_1(1,1),data_1(end,1),100)';
+                lam2_be_ext = linspace(data_1(1,2),data_1(end,2),100)';
+            else
+                lam1_be_ext = data_1(:,1);
+                lam2_be_ext = data_1(:,2);
+            end
+            lam_1_ext = [lam_1_ext; lam1_be_ext];
+            lam_2_ext = [lam_2_ext; lam2_be_ext];
+            bounds_ext(i,:) = [len_ext+1 length(lam_1_ext)];
+            len_ext = length(lam_1_ext);
         end
 end
 

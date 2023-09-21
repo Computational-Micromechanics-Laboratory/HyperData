@@ -39,8 +39,18 @@ UB = inf*ones(n_ctrl_pts,n_free_ener);
 [err_ut, err_et,err_ps,err_be, Pdata_ut, Pdata_et,Pdata_ps,Pdata1_be, Pdata2_be] = ...
    object_modinv(opt_control_pts,degree,lam_ut,lam_et,lam_ps,lam1_be,lam2_be,P_ut,P_et,P_ps,P1_be,P2_be);
 
+[~, ~,~,~, Pdata_ut_ext, Pdata_et_ext,Pdata_ps_ext,Pdata1_be_ext, Pdata2_be_ext] = ...
+   object_modinv(opt_control_pts,degree,lam_ut_ext,lam_et_ext,lam_ps_ext,lam1_be_ext,lam2_be_ext,0,0,0,0,0);
+
+
 Pdata_ut = double(Pdata_ut);
 Pdata_et = double(Pdata_et);
 Pdata_ps = double(Pdata_ps);
 Pdata1_be = double(Pdata1_be);
 Pdata2_be = double(Pdata2_be);
+
+Pdata_ut_ext = double(Pdata_ut_ext);
+Pdata_et_ext = double(Pdata_et_ext);
+Pdata_ps_ext = double(Pdata_ps_ext);
+Pdata1_be_ext = double(Pdata1_be_ext);
+Pdata2_be_ext = double(Pdata2_be_ext);

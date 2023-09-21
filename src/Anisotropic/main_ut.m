@@ -73,3 +73,19 @@ end
 qof1 = qof_function(lam_ut1, P11, P_ut1); 
 qof2 = qof_function(lam_ut2, P22, P_ut2);
 qof_tot = qof1+qof2;
+
+% Stresses and first derivatives or B-splines / extended
+[I1_ut1,I1_ut2,F_ut1,F_ut2,E4_ut1,E4_ut2,In_ut1,In_ut2,Ifib_ut1,Ifib_ut2,...
+    Efib_ut1,Efib_ut2] = ut_defo(lam_ut1_ext,lam_ut2_ext);
+ switch dispmodel
+    case "io"
+        [~, ~, P11, ~, ~, ~,~,~] = ...
+            object_UT(opt_control_pts,degree,n_ut1_ext,F_ut1,0,I1_ut1,I1_ut1,E4_ut1,E4_ut1,Efib_ut1); %CHECK
+        [~, ~, ~, P22, p1_1, p4_1,p1_2,p4_2] = ...
+            object_UT(opt_control_pts,degree,n_ut2_ext,F_ut2,0,I1_ut2,I1_ut2,E4_ut2,E4_ut2,Efib_ut2);
+    case "fs"
+        [~, ~, P11, ~, ~, ~,~,~] = ...
+            object_UT(opt_control_pts,degree,n_ut1_ext,F_ut1,0,I1_ut1,I1_ut1,E4_ut1,E4_ut1,Ifib_ut1);
+        [~, ~, ~, P22, p1_1, p4_1,p1_2,p4_2] = ...
+            object_UT(opt_control_pts,degree,n_ut2_ext,F_ut2,0,I1_ut2,I1_ut2,E4_ut2,E4_ut2,Ifib_ut2);
+end
