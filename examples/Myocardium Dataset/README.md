@@ -1,0 +1,2 @@
+Data is obtained from O. G ̈ultekin, G. Sommer, G. A. Holzapfel, An orthotropic viscoelastic model for the passive myocardium: continuum basis and numerical treatment, Computer Methods in Biomechanics and Biomedical Engineering 19 (15) (2016) 1647–1664.
+The data for anisotropic data is given.

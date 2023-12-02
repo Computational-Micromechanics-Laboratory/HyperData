@@ -1,0 +1,2 @@
+Data is obtained from L. R. G. Treloar, Stress-Strain Data for Vulcanized Rubber under Various Types of Deformation, Rubber Chemistry and Technology 17 (4) (1944) 813–825.
+The data, and fit with modified invariant-based isotropic model is given.

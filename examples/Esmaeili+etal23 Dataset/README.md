@@ -1,0 +1,2 @@
+Data is obtained from Esmaeili, A., George, D., Masters, I., & Hossain, M. (2023). Biaxial experimental characterizations of soft polymers: A Review. Polymer Testing, 128, 108246. https://doi.org/10.1016/j.polymertesting.2023.108246.
+The data and the fit with principal stretch based isotropic model is given.
